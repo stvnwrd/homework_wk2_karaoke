@@ -95,6 +95,8 @@ class Room
     return short
   end
 
+#split this functionality up with the guests.rb
+
   def charge_guests_bill_share
     for guest in @checked_guests
       guest.wallet = guest.wallet - split_the_bill
@@ -112,7 +114,7 @@ class Room
 
   def fully_check_guest_out(customer)
     p "The total bill is £#{total_bill}. Split between #{checked_guests.count} is £#{split_the_bill} each."
-    p report_change_conundrum if calculate_overpayment.round(2) > 0  
+    p report_change_conundrum if calculate_overpayment.round(2) > 0
     if guest_short_for_their_share.count > 0
       for guest in guest_short_for_their_share
         p "Short of a loan from another customer, #{guest} is washing glasses for the rest of the night."
